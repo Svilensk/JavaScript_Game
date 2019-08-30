@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+
+    <title>Do You Like Hurting Other People?</title>
+
+    <meta property="og:url"         content="http://hurtingothers.byethost7.com/" />
+    <meta property="og:type"        content="Online Videogame" />
+    <meta property="og:title"       content="Do You Like Hurting Other People?" />
+    <meta property="og:description" content="Show then what you are capable of" />
+    <meta property="og:image"       content="http://hurtingothers.byethost7.com/media/icon.png" />
+
+    <link href="css/style.css" type="text/css" rel="stylesheet" media="">
+    <script src="js/jquery-3.2.1.js"></script>
+    <script src="js/Box2D.js"></script>
+    <script src="js/physics_aux.js"></script>
+    <script src="js/input.js"></script>
+    <script src="js/code.js"></script>
+    <script src="js/camera.js"></script>
+    <script src="js/player.js"></script>
+    <script src="js/ai.js"></script>
+    <script src="js/background.js"></script>
+</head>
+
+<body onload="Init();" onload="checkLoginState()";>
+
+<script>
+    window.fbAsyncInit = function() {
+        FB.init({
+            appId            : '2073972386157900',
+            autoLogAppEvents : true,
+            xfbml            : true,
+            version          : 'v3.0'
+        });
+        FB.AppEvents.logPageView(); 
+    };
+      
+    (function(d, s, id){
+        var js, fjs = d.getElementsByTagName(s)[0];
+        if (d.getElementById(id)) {return;}
+        js = d.createElement(s); js.id = id;
+        js.src = "https://connect.facebook.net/en_US/sdk.js";
+        fjs.parentNode.insertBefore(js, fjs);
+    }(document, 'script', 'facebook-jssdk'));
+
+//Dejo el resto de funciones comentadas para tenerlas en cuenta por si las necesito a futuros, pero no las voy a utilizar
+/*
+function checkLoginState() {
+    FB.getLoginStatus(function(response) {
+    statusChangeCallback(response);
+    });
+}
+
+function LogIn () {
+    FB.login(function (response) {
+        ValidateUser(); 
+    }, {scope: 'public_profile, email '});
+}
+
+function ValidateUser () {
+        FB.getLoginStatus(function(response) {
+            statusChangeCallback(response);    
+    }); 
+}
+
+function testAPI () {
+        console.log('Welcome!  Fetching your information.... ');    
+        FB.api('/me?fields=id,name,first_name,email,picture', function(response) {
+        // The user was logged successfully        
+        console.log('Successful login for: ' + response.name);        
+        console.log(response);    
+    }); 
+} 
+
+function statusChangeCallback () {
+    console.log('statusChangeCallback');
+    console.log(response);
+    if (response.status === 'connected')  // Logged into your app and Facebook        
+    testAPI();    
+    else // The person is not logged or we are unable to tell        
+    alert('unable to login'); }
+*/
+
+function ShareOnFB () {    
+    FB.ui({        
+        method: 'share',    
+        display: 'popup',        
+        quote: 'I Enjoy Hurting others, what about you?',       
+        href: 'https://hurtingothers.byethost7.com/',
+    }, 
+    function(response){}); 
+}
+
+
+</script> 
+
+<button type="button" onclick=ShareOnFB(); style=" height: 30px; width: 100%; color: #1aff1a; font-size: 20px; background-color: black; border-color: black">>Facebook User? Press Here</button>
+
+    <div id="container">
+        <canvas id="my_canvas" width="1280" height="720"></canvas>
+        <div style=" margin-top: 10px; color: whitesmoke; float: right; font-size: 15px; font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif "> Created by: Santiago Arribas Maroto</div>
+        <div style="width: 50%; margin-top: 10px;color: #1aff1a; float: left; font-size: 15px; font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif "> >How do i Pause?_ : PRESS -SPACE-</div>
+        <div style="width: 70%; margin-top: 10px;color: #1aff1a; float: left; font-size: 15px; font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif "> >How do i Move?_ : PRESS -W,A,S or D-</div>
+        <div style="width: 70%; margin-top: 10px;color: RED; float: left; font-size: 15px; font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif "> >How do i Shoot?_ : PULL THE TRIGGER</div>
+        <div id = "overlayCRT_effect" class="crt"></div>
+    </div>
+</body>
+</html>
